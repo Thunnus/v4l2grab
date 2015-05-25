@@ -97,7 +97,7 @@ static unsigned int height = 480;
 static unsigned int fps = 30;
 static unsigned char jpegQuality = 70;
 static char* jpegFilename = NULL;
-static char* deviceName = "/dev/video0";
+static char* deviceName = "/dev/video1";
 
 /**
 	Print error message and terminate programm with EXIT_FAILURE return code.
@@ -739,7 +739,7 @@ static void deviceInit(void)
 */
 static void deviceClose(void)
 {
-	if (-1 == v4l2_close(fd))
+	if (-1 == close(fd))
 		errno_exit("close");
 
 	fd = -1;
